@@ -1,1 +1,1 @@
-# messagingluizcrrds-node-rabbitmq
+Utilizando RabbitMQ para gestão e enfileiramento de mensagens com NodeJs.
