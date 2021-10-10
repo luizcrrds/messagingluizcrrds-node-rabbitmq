@@ -1,0 +1,1 @@
+# messagingluizcrrds-node-rabbitmq
