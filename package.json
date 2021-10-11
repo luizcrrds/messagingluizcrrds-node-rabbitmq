@@ -1,15 +1,9 @@
 {
-  "name": "rabitmq-nodejs",
+  "name": "messagingluizcrrds-node-rabbitmq",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Luiz Carlos",
-  "license": "MIT",
+  "description": "Utilizando RabbitMQ para gestão e enfileiramento de mensagens com NodeJs.",
   "dependencies": {
-    "amqplib": "^0.8.0"
+    "amqplib": "latest",
+    "js-beautify": "^1.9.1"
   }
 }

@@ -1,22 +1,29 @@
-const amqplib = requerie('amqplib/callback_api');
+#!/usr/bin/env node
 
-// 1 -> Criando a conexão
-amqplib.connect('amqplib://localhost',(erroConexao, conexao) => {
-    if(erroConexao){
-        throw erroConexao;
+var amqp = require('amqplib/callback_api');
+
+//1 -> Criando a conexão
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+
+  // 2 -> Criando o canal
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
     }
 
-    // 2 -> Criando o canal
-    conexao.createChannel((erroCanal, canal) => {
-        if(erroCanal){
-            throw erroCanal;
-        }
-        
-        //3 -> criando a fila
-        const fila = 'envioEmail';
-        canal.assertQueue(fila);
+    //3 -> criando a fila
+    var queue = 'minha-primeira-fila';
+    var msg = 'Olá seja bem vindo a fila Zé Aldo.';
 
-        //4 -> Enviando mensagem para a fila
-        canal.sendToQueue(fila, Buffer.from('Enviando mensagem para a fila.'));
-    })
-})
+    channel.assertQueue(queue, {
+      durable: false
+    });
+
+    //4 -> Enviando mensagem para a fila
+    channel.sendToQueue(queue, Buffer.from(msg));
+    console.log(" [x] Mensagem envia para a fila :  %s", msg);
+  });
+});
